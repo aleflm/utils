@@ -1,4 +1,10 @@
 # @rosen-bridge/rosen-extractor
+## 11.1.3
+
+### Minor Changes
+
+- Add Firo chain support with FiroRosenExtractor and FiroRpcRosenExtractor
+- Add support for Firo OP_RETURN parsing and token transformation
 
 ## 11.1.2
 
