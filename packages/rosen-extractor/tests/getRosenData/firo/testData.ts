@@ -16,7 +16,7 @@ export const txUtxos = {
     outputs: [
       {
         scriptPubKey:
-          '6a4b010000000100989680000000000098968039018dd8d9339deaf201790f6891adebb3abd78c90f3231aa95f12ce8f9ab18016dab2d790baeecb323f792babc1a769511b4a3262e6703f24c1',
+          '6a3300000000000098968000000000009896802103f999da8e6e42660e4464d17d29e63bc006734a6710a24eb489b466323d3a9339',
         value: 0n,
       },
       {
@@ -53,7 +53,7 @@ export const txUtxos = {
     outputs: [
       {
         scriptPubKey:
-          '6a4b010000000100989680000000000098968039018dd8d9339deaf201790f6891adebb3abd78c90f3231aa95f12ce8f9ab18016dab2d790baeecb323f792babc1a769511b4a3262e6703f24c1',
+          '6a3300000000000098968000000000009896802103f999da8e6e42660e4464d17d29e63bc006734a6710a24eb489b466323d3a9339',
         value: 0n,
       },
       {
@@ -66,7 +66,7 @@ export const txUtxos = {
     outputs: [
       {
         scriptPubKey:
-          '6a4b090000000000989680000000000098968039018dd8d9339deaf201790f6891adebb3abd78c90f3231aa95f12ce8f9ab18016dab2d790baeecb323f792babc1a769511b4a3262e6703f24c1',
+          '6a3309000000000098968000000000009896802103f999da8e6e42660e4464d17d29e63bc006734a6710a24eb489b466323d3a9339',
         value: 0n,
       },
       {
@@ -101,9 +101,8 @@ export const txs = {
 };
 
 export const rosenData = {
-  toChain: 'cardano',
-  toAddress:
-    'addr1qxxa3kfnnh40yqtepa5frt0tkw4a0rys7v33422lzt8glx43sqtd4vkhjzawajej8aujh27p5a54zx62xf3wvuplynqs3fsqet',
+  toChain: 'ergo',
+  toAddress: '9iMjQx8PzwBKXRvsFUJFJAPoy31znfEeBUGz8DRkcnJX4rJYjVd',
   bridgeFee: '10000000',
   networkFee: '10000000',
   fromAddress:
@@ -111,11 +110,11 @@ export const rosenData = {
   sourceChainTokenId: 'firo',
   amount: '10000000',
   targetChainTokenId:
-    'c15f1361f5eeba416dd63e059fce34f0c57499e9afe733ea0fd59cf63f49',
+    'e15f1361f5eeba416dd63e059fce34f0c57499e9afe733ea0fd59cf63f49',
   sourceTxId:
     '835b8bfb12b7e9b9d3d946458e38c628a2df8ba8059ac9c664360836157b994e',
   rawData:
-    '6a4b010000000100989680000000000098968039018dd8d9339deaf201790f6891adebb3abd78c90f3231aa95f12ce8f9ab18016dab2d790baeecb323f792babc1a769511b4a3262e6703f24c1',
+    '6a3300000000000098968000000000009896802103f999da8e6e42660e4464d17d29e63bc006734a6710a24eb489b466323d3a9339',
 };
 
 export const lockUtxo = {

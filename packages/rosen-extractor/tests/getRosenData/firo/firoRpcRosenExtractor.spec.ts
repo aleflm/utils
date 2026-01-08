@@ -1,7 +1,7 @@
 import { FiroRpcRosenExtractor } from '../../../lib';
 import * as testData from './rpcTestData';
 import TestUtils from '../testUtils';
-import { ETHEREUM_CHAIN, CARDANO_CHAIN } from '../../../lib/getRosenData/const';
+import { ETHEREUM_CHAIN, ERGO_CHAIN } from '../../../lib/getRosenData/const';
 import { TokenMap } from '@rosen-bridge/tokens';
 import { FiroRpcTransaction } from '../../../lib/getRosenData/firo/types';
 
@@ -158,7 +158,7 @@ describe('FiroRpcRosenExtractor', () => {
   describe('getAssetTransformation', () => {
     /**
      * @target `FiroRpcRosenExtractor.getAssetTransformation` should return transformation
-     * successfully when FIRO is supported on target chain (Cardano)
+     * successfully when FIRO is supported on target chain (Ergo)
      * @dependencies
      * @scenario
      * - mock utxo
@@ -167,16 +167,16 @@ describe('FiroRpcRosenExtractor', () => {
      * @expected
      * - it should return expected asset transformation
      */
-    it('should return transformation successfully when FIRO is supported on target chain (Cardano)', () => {
+    it('should return transformation successfully when FIRO is supported on target chain (Ergo)', () => {
       const lockUtxo = testData.lockUtxo;
 
       const extractor = new FiroRpcRosenExtractor(
         testData.lockAddress,
         tokenMap,
       );
-      const result = extractor.getAssetTransformation(lockUtxo, CARDANO_CHAIN);
+      const result = extractor.getAssetTransformation(lockUtxo, ERGO_CHAIN);
 
-      expect(result).toStrictEqual(testData.rsFiroCardanoTransformation);
+      expect(result).toStrictEqual(testData.rsFiroErgoTransformation);
     });
 
     /**

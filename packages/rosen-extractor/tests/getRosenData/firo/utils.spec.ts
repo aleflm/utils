@@ -1,12 +1,12 @@
 import {
-  parseRosenData,
+  parseOpReturn,
   addressToOutputScript,
 } from '../../../lib/getRosenData/firo/utils';
 import * as testData from './utilsTestData';
 
-describe('parseRosenData', () => {
+describe('parseOpReturn', () => {
   /**
-   * @target parseRosenData should extract rosen data successfully
+   * @target parseOpReturn should extract rosen data successfully
    * @dependencies
    * @scenario
    * - mock utxo with scriptPubKey that contains valid rosen data
@@ -17,13 +17,13 @@ describe('parseRosenData', () => {
    */
   it('should extract rosen data successfully', () => {
     const script = testData.opReturnScripts.valid;
-    const result = parseRosenData(script);
+    const result = parseOpReturn(script);
 
     expect(result).toStrictEqual(testData.opReturnData);
   });
 
   /**
-   * @target parseRosenData should throw error
+   * @target parseOpReturn should throw error
    * when script does not start with OP_RETURN opcode
    * @dependencies
    * @scenario
@@ -36,12 +36,12 @@ describe('parseRosenData', () => {
     const script = testData.opReturnScripts.noOpReturn;
 
     expect(() => {
-      parseRosenData(script);
+      parseOpReturn(script);
     }).toThrow('script does not start with OP_RETURN opcode (6a)');
   });
 
   /**
-   * @target parseRosenData should throw error
+   * @target parseOpReturn should throw error
    * when toChain is invalid
    * @dependencies
    * @scenario
@@ -54,7 +54,7 @@ describe('parseRosenData', () => {
     const script = testData.opReturnScripts.invalidToChain;
 
     expect(() => {
-      parseRosenData(script);
+      parseOpReturn(script);
     }).toThrow(/invalid toChain code/);
   });
 });

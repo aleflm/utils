@@ -32,8 +32,3 @@ export const FIRO_NETWORK = {
   scriptHash: 0x07,
   wif: 0xd2,
 };
-
-// Testnet
-// 0x41 (decimal 65)
-// 0xb2 (decimal 178)
-// 0xb9 (decimal 185)

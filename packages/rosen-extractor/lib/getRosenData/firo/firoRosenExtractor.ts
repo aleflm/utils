@@ -1,10 +1,11 @@
 import { RosenData, TokenTransformation } from '../abstract/types';
 import AbstractRosenDataExtractor from '../abstract/abstractRosenDataExtractor';
 import { FIRO_CHAIN, FIRO_NATIVE_TOKEN } from '../const';
-import { FiroTx, FiroTxOutput, OpReturnData } from './types';
+import { FiroTx, FiroTxOutput } from './types';
+import { MinimalOnChainRosenData } from '../../types';
 import { TokenMap } from '@rosen-bridge/tokens';
 import { AbstractLogger } from '@rosen-bridge/abstract-logger';
-import { parseRosenData, addressToOutputScript } from './utils';
+import { parseOpReturn, addressToOutputScript } from './utils';
 import JsonBigInt from '@rosen-bridge/json-bigint';
 
 export class FiroRosenExtractor extends AbstractRosenDataExtractor<string> {
@@ -20,8 +21,15 @@ export class FiroRosenExtractor extends AbstractRosenDataExtractor<string> {
    * extracts RosenData from given lock transaction in FiroTx format
    * @param serializedTransaction stringified transaction in FiroTx format
    */
-  extractRawData = (serializedTransaction: string): RosenData | undefined => {
-    const transaction: FiroTx = JsonBigInt.parse(serializedTransaction);
+  extractData = (serializedTransaction: string): RosenData | undefined => {
+    let transaction: FiroTx;
+    try {
+      transaction = JsonBigInt.parse(serializedTransaction);
+    } catch (e) {
+      throw new Error(
+        `Failed to parse transaction json to FiroTx format while extracting rosen data: ${e}`,
+      );
+    }
     const baseError = `No rosen data found for tx [${transaction.id}]`;
     try {
       const outputs = transaction.outputs;
@@ -34,14 +42,14 @@ export class FiroRosenExtractor extends AbstractRosenDataExtractor<string> {
       let validLock = false; // a lock box is found with available asset transformation
 
       // parse rosen data from OP_RETURN box
-      let opReturnData: OpReturnData | undefined;
+      let opReturnData: MinimalOnChainRosenData | undefined;
       let rawData: string = '';
       for (let i = 0; i < outputs.length; i++) {
         const output = outputs[i];
         if (output.scriptPubKey.slice(0, 2) !== '6a') continue; // not an OP_RETURN utxo
 
         try {
-          opReturnData = parseRosenData(output.scriptPubKey);
+          opReturnData = parseOpReturn(output.scriptPubKey);
           rawData = output.scriptPubKey;
           validData = true;
           break;

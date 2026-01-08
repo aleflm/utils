@@ -1,12 +1,7 @@
 import { FiroRosenExtractor } from '../../../lib';
 import * as testData from './testData';
 import TestUtils from '../testUtils';
-import {
-  ERGO_CHAIN,
-  BITCOIN_CHAIN,
-  CARDANO_CHAIN,
-  ETHEREUM_CHAIN,
-} from '../../../lib/getRosenData/const';
+import { ERGO_CHAIN, ETHEREUM_CHAIN } from '../../../lib/getRosenData/const';
 import JsonBigInt from '@rosen-bridge/json-bigint';
 import { TokenMap } from '@rosen-bridge/tokens';
 
@@ -164,46 +159,6 @@ describe('FiroRosenExtractor', () => {
       const result = extractor.getAssetTransformation(lockUtxo, ERGO_CHAIN);
 
       expect(result).toStrictEqual(testData.rsFiroErgoTransformation);
-    });
-
-    /**
-     * @target `FiroRosenExtractor.getAssetTransformation` should return transformation
-     * successfully when FIRO is supported on target chain (Bitcoin)
-     * @dependencies
-     * @scenario
-     * - mock utxo
-     * - run test with supported target chain (Bitcoin)
-     * - check returned value
-     * @expected
-     * - it should return undefined
-     */
-    it('should return transformation successfully when FIRO is supported on target chain (Bitcoin)', () => {
-      const lockUtxo = testData.lockUtxo;
-
-      const extractor = new FiroRosenExtractor(testData.lockAddress, tokenMap);
-      const result = extractor.getAssetTransformation(lockUtxo, BITCOIN_CHAIN);
-
-      expect(result).toStrictEqual(testData.rsFiroBitcoinTransformation);
-    });
-
-    /**
-     * @target `FiroRosenExtractor.getAssetTransformation` should return transformation
-     * successfully when FIRO is supported on target chain (Cardano)
-     * @dependencies
-     * @scenario
-     * - mock utxo
-     * - run test with supported target chain (Cardano)
-     * - check returned value
-     * @expected
-     * - it should return expected transformation
-     */
-    it('should return transformation successfully when FIRO is supported on target chain (Cardano)', () => {
-      const lockUtxo = testData.lockUtxo;
-
-      const extractor = new FiroRosenExtractor(testData.lockAddress, tokenMap);
-      const result = extractor.getAssetTransformation(lockUtxo, CARDANO_CHAIN);
-
-      expect(result).toStrictEqual(testData.rsFiroCardanoTransformation);
     });
 
     /**

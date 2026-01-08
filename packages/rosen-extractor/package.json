@@ -36,7 +36,6 @@
     "@rosen-bridge/json-bigint": "^1.1.0",
     "@rosen-bridge/tokens": "^5.0.0",
     "bitcoinjs-lib": "^6.1.5",
-    "bs58check": "^4.0.0",
     "ergo-lib-wasm-nodejs": "^0.24.1",
     "ethers": "6.13.2",
     "lodash-es": "^4.17.21"
@@ -44,7 +43,6 @@
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",
     "@vitest/coverage-istanbul": "^3.1.4",
-    "axios": "^1.13.2",
     "tsx": "^4.20.5",
     "vitest": "^3.1.4"
   },
